@@ -1,0 +1,80 @@
+{% extends "bookmodule/layouts/base.html" %}
+{% block title %}Tables Example{% endblock %}
+{% load static %}
+{% block content %}
+<h1>Example of Tables</h1>
+
+<!-- Table 1: Table of Fruits and Their Prices -->
+<h2>Table 1: Table of Fruits and Their Prices</h2>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Fruit</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Apple</td>
+            <td>$0.25</td>
+        </tr>
+        <tr>
+            <td>Orange</td>
+            <td>$0.50</td>
+        </tr>
+        <tr>
+            <td>Banana</td>
+            <td>$1.00</td>
+        </tr>
+        <tr>
+            <td>Pineapple</td>
+            <td>$2.00</td>
+        </tr>
+        <tr>
+            <td><strong>Total</strong></td>
+            <td><strong>$3.75</strong></td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Table 2: A more complex sample table -->
+<h2>Table 2: A more complex sample table</h2>
+<table border="1">
+    <caption>Camelid comparison <small>Approximate as of 6/2011</small></caption>
+    <thead>
+        <tr>
+            <th rowspan="2"><img src="{% static 'book1.jpg' %}" alt=""> # of humps</th>
+            <th colspan="2">Indigenous region</th>
+            <th rowspan="2">Spits?</th>
+            <th rowspan="2">Produces wool?</th>
+        </tr>
+        <tr>
+            <th>1</th>
+            <th>2</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Arabian Peninsula</td>
+            <td>Africa/Asia</td>
+            <td>Yes</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Andes Mountains</td>
+            <td>N/A</td>
+            <td>Yes</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>N/A</td>
+            <td>N/A</td>
+            <td>Yes</td>
+            <td>Yes</td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

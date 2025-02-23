@@ -1,0 +1,20 @@
+{% extends "bookmodule/layouts/base.html" %}
+{% block title %}Links Example{% endblock %}
+{% block content %}
+<h1>Example of Links with Styling</h1>
+
+<!-- Go to QU website (open a new tab) -->
+<a class="link green-color" href="https://www.qu.edu.qa" target="_blank">Go to QU website (open a new tab)</a><br>
+
+<!-- Go to QU website (open in the same page/tab) -->
+<a class="link gray-color" href="https://www.qu.edu.qa" target="_self">Go to QU website (open in the same page/tab)</a><br>
+
+<!-- Go to QU website (open in the same page/tab) -->
+<a class="link black-color"  href="https://www.qu.edu.qa">Go to QU website (open in the same page/tab)</a><br>
+
+<!-- Example Section Link -->
+<a class="link"  href="#example">Go to Example Section</a><br>
+
+<!-- Example Section -->
+<div id="example" class="example-box">This is the example section</div>
+{% endblock %}

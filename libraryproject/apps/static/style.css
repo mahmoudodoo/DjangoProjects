@@ -31,3 +31,54 @@ p {
 .topnav a.active{
     color: #008CBA;
 }
+
+
+.external-link {
+    color: blue;
+    text-decoration: underline;
+}
+
+.internal-link {
+    color: green;
+    text-decoration: none;
+}
+
+.internal-link:hover {
+    text-decoration: underline;
+}
+
+.link{
+    height: 130px !important;
+    width: 500px;
+
+}
+.black-color{
+    color: #eae4e4;
+    background-color: #000000;
+}
+
+.gray-color{
+    color: #eceaea;
+    background-color: #595959;
+}
+
+.green-color{
+    color: #f6fdf4;
+    background-color: #85dc6b;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+thead {
+    background-color: lightblue;
+}
