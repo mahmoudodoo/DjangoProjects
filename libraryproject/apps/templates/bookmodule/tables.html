@@ -2,11 +2,11 @@
 {% block title %}Tables Example{% endblock %}
 {% load static %}
 {% block content %}
-<h1>Example of Tables</h1>
+<link rel="stylesheet" href="{% static 'tables.css' %}">
 
 <!-- Table 1: Table of Fruits and Their Prices -->
 <h2>Table 1: Table of Fruits and Their Prices</h2>
-<table border="1">
+<table>
     <thead>
         <tr>
             <th>Fruit</th>
@@ -30,51 +30,65 @@
             <td>Pineapple</td>
             <td>$2.00</td>
         </tr>
+    </tbody>
+    <tfoot>
         <tr>
             <td><strong>Total</strong></td>
             <td><strong>$3.75</strong></td>
         </tr>
-    </tbody>
+    </tfoot>
 </table>
 
 <!-- Table 2: A more complex sample table -->
 <h2>Table 2: A more complex sample table</h2>
-<table border="1">
-    <caption>Camelid comparison <small>Approximate as of 6/2011</small></caption>
-    <thead>
-        <tr>
-            <th rowspan="2"><img src="{% static 'book1.jpg' %}" alt=""> # of humps</th>
-            <th colspan="2">Indigenous region</th>
-            <th rowspan="2">Spits?</th>
-            <th rowspan="2">Produces wool?</th>
-        </tr>
-        <tr>
-            <th>1</th>
-            <th>2</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>1</td>
-            <td>Arabian Peninsula</td>
-            <td>Africa/Asia</td>
-            <td>Yes</td>
-            <td>Yes</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Andes Mountains</td>
-            <td>N/A</td>
-            <td>Yes</td>
-            <td>Yes</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>N/A</td>
-            <td>N/A</td>
-            <td>Yes</td>
-            <td>Yes</td>
-        </tr>
-    </tbody>
+<table>
+    <!-- Row 0: Header -->
+    <tr>
+        <!-- Column 0: Image and Animal Names -->
+        <td rowspan="5" class="image-column">
+            <img src="{% static 'book1.jpg' %}" alt="Camelid Image">
+            <div class="animal-names">
+                <p><strong>Dromedary</strong></p>
+                <p><strong>Camels (bactrian)</strong></p>
+                <p><strong>Llamas</strong></p>
+            </div>
+        </td>
+        <!-- Column 1: Header -->
+        <td colspan="4" class="header-cell">
+            <strong>Camelid comparison</strong> <small>Approximate as of 6/2011</small>
+        </td>
+    </tr>
+    <!-- Row 1: Sub-header -->
+    <tr>
+        <!-- Column 1: Sub-table Headers -->
+        <th># of humps</th>
+        <th>Indigenous region</th>
+        <th>Spits?</th>
+        <th>Produces wool?</th>
+    </tr>
+    <!-- Row 2: Dromedary Data -->
+    <tr>
+        <!-- Column 1: Dromedary Data -->
+        <td>1</td>
+        <td>Arabian Peninsula</td>
+        <td>Yes</td>
+        <td>Yes</td>
+    </tr>
+    <!-- Row 3: Camels (bactrian) Data -->
+    <tr>
+        <!-- Column 1: Camels (bactrian) Data -->
+        <td>2</td>
+        <td>Africa/Asia</td>
+        <td>Yes</td>
+        <td>Yes</td>
+    </tr>
+    <!-- Row 4: Llamas Data -->
+    <tr>
+        <!-- Column 1: Llamas Data -->
+        <td>1</td>
+        <td>Andes Mountains</td>
+        <td>Yes</td>
+        <td>Yes</td>
+    </tr>
 </table>
 {% endblock %}

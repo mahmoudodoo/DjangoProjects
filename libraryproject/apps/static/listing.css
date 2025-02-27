@@ -1,0 +1,29 @@
+/* Style for the h1 heading */
+h1 {
+    height: 70px;
+    width: 100%;
+    background-color: #5f9ea0; /* Cadet Blue */
+    color: white;
+    text-align: center;
+    line-height: 70px; /* Vertically center the text */
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+
+
+/* Responsive design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.5rem;
+        height: 60px;
+        line-height: 60px;
+    }
+
+    ul, ol {
+        padding-left: 15px;
+    }
+}

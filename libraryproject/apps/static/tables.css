@@ -1,0 +1,102 @@
+/* General Table Styling */
+table {
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Table 1: Fruits and Their Prices */
+table:first-of-type {
+    width: 150px; /* Fixed width for the first table */
+}
+
+table:first-of-type th,
+table:first-of-type td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #e0e0e0;
+}
+
+table:first-of-type th {
+    background-color: #3498db; /* Bright blue */
+    color: white;
+}
+
+table:first-of-type tfoot td {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+/* Table 2: Camelid Comparison */
+table:last-of-type {
+    width: 100%; /* Full width for the second table */
+}
+
+table:last-of-type th,
+table:last-of-type td {
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+}
+
+table:last-of-type th {
+    background-color: #3498db; /* Bright blue */
+    color: white;
+}
+
+/* Image and Animal Names Column */
+table:last-of-type .image-column {
+    width: 200px; /* Fixed width for the image column */
+    vertical-align: top; /* Align content to the top */
+    text-align: center; /* Center-align content */
+}
+
+table:last-of-type .image-column img {
+    width: 200px;
+    height: 200px;
+    display: block;
+    margin: 0 auto 10px; /* Add margin below the image */
+}
+
+table:last-of-type .image-column .animal-names {
+    text-align: left; /* Left-align animal names */
+}
+
+table:last-of-type .image-column .animal-names p {
+    margin: 5px 0; /* Add spacing between animal names */
+}
+
+/* Header cell styling */
+table:last-of-type .header-cell {
+    width: 650px;
+    height: 140px;
+    text-align: center;
+    font-size: 1.2rem;
+    background-color: #f4f4f4;
+}
+
+table:last-of-type .header-cell small {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    table:first-of-type {
+        width: 100%;
+    }
+
+    table:last-of-type .image-column {
+        width: 100%;
+    }
+
+    table:last-of-type .image-column img {
+        width: 150px;
+        height: 150px;
+    }
+
+    table:last-of-type .header-cell {
+        width: 100%;
+        height: auto;
+    }
+}

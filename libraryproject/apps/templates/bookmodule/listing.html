@@ -1,6 +1,8 @@
 {% extends "bookmodule/layouts/base.html" %}
 {% block title %}Nested Lists Example{% endblock %}
+{% load static %}
 {% block content %}
+<link rel="stylesheet" href="{% static 'listing.css' %}">
 <h1>The Best Features of the Internet</h1>
 <ul>
     <li>You can meet new people from countries around the world.</li>

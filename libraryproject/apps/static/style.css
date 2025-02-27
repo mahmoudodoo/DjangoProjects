@@ -1,84 +1,136 @@
-h1{
-    color: green;
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
 }
 
-h2{
-    color: lightskyblue;
+h1 {
+    color: #2ecc71; /* A vibrant green */
+    font-size: 2.5rem;
+    text-align: center;
+    margin-top: 20px;
+}
+
+h2 {
+    color: #3498db; /* A bright sky blue */
+    font-size: 2rem;
+    margin-top: 15px;
 }
 
 p {
-    font-family: verdana;
-    font-size: 20px;
+    font-family: 'Verdana', sans-serif;
+    font-size: 1.1rem;
+    color: #555;
+    margin: 15px 0;
+    line-height: 1.8;
 }
 
-
-/* Add a black background color to the top navigation */
+/* Navigation Bar */
 .topnav {
-    background-color: #eeeeee;
+    background-color: #ffffff;
     width: 100%;
+    padding: 15px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Style the links inside the navigation bar */
 .topnav a {
     color: #000000;
     text-align: center;
-    margin-right: 25px;
+    margin: 0 25px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 1.1rem;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
-/* Add a color to the active/current link */
-.topnav a.active{
+.topnav a:hover {
     color: #008CBA;
+    transform: translateY(-3px);
 }
 
-
-.external-link {
-    color: blue;
-    text-decoration: underline;
+.topnav a.active {
+    color: #008CBA;
+    font-weight: bold;
 }
 
-.internal-link {
-    color: green;
-    text-decoration: none;
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
-.internal-link:hover {
-    text-decoration: underline;
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
-.link{
-    height: 130px !important;
-    width: 500px;
+/* Responsive Design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
 
-}
-.black-color{
-    color: #eae4e4;
-    background-color: #000000;
-}
+    h2 {
+        font-size: 1.5rem;
+    }
 
-.gray-color{
-    color: #eceaea;
-    background-color: #595959;
-}
+    .topnav {
+        flex-direction: column;
+        padding: 10px 0;
+    }
 
-.green-color{
-    color: #f6fdf4;
-    background-color: #85dc6b;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
+    .topnav a {
+        margin: 10px 0;
+    }
 }
 
-th, td {
-    border: 1px solid black;
-    padding: 8px;
-    text-align: left;
+/* Additional Stylish Elements */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-thead {
-    background-color: lightblue;
+.button {
+    background-color: #008CBA;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #005f73;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
 }
