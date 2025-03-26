@@ -2,6 +2,8 @@ from django.shortcuts import render
 from apps.bookmodule.models import Book
 # Create your views here.
 from django.http import HttpResponse
+from django.db.models import Q
+from django.db.models import Count, Sum, Avg, Max, Min
 
 def index(request):
     return render(request, "bookmodule/index.html")
@@ -66,3 +68,36 @@ def complex_query(request):
         return render(request, 'bookmodule/bookList.html', {'books':mybooks})
     else:
         return render(request, 'bookmodule/index.html')
+
+def task1(request):
+    books = Book.objects.filter(Q(price__lte=50))
+    return render(request, 'bookmodule/bookList.html', {'books': books})
+
+def task2(request):
+    books = Book.objects.filter(
+        Q(edition__gt=2) & (Q(title__icontains='qu') | Q(author__icontains='qu'))
+    )
+    return render(request, 'bookmodule/bookList.html', {'books': books})
+
+
+def task3(request):
+    books = Book.objects.exclude(
+        Q(edition__gt=2) & (Q(title__icontains='qu') | Q(author__icontains='qu'))
+    )
+    return render(request, 'bookmodule/bookList.html', {'books': books})
+
+def task4(request):
+    books = Book.objects.order_by('title')
+    return render(request, 'bookmodule/bookList.html', {'books': books})
+
+
+
+def task5(request):
+    stats = Book.objects.aggregate(
+        total_books=Count('id'),
+        total_price=Sum('price'),
+        average_price=Avg('price'),
+        max_price=Max('price'),
+        min_price=Min('price')
+    )
+    return render(request, 'bookmodule/stats.html', {'stats': stats})

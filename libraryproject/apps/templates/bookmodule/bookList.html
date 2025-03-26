@@ -8,7 +8,7 @@
     <ul>
         {% for book in books %}
         <li>
-            <strong>{{ book.title }}</strong> by {{ book.author }}
+            <strong>{{ book.title }}</strong> by {{ book.author }} price:<strong>{{book.price}}</strong> edition:<strong>{{book.edition}}</strong>
         </li>
         {% endfor %}
     </ul>
