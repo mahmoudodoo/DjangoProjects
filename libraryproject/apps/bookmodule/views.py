@@ -1,16 +1,80 @@
 from django.shortcuts import render
 from apps.bookmodule.models import Book
 # Create your views here.
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from django.db.models import Q
 from django.db.models import Count, Sum, Avg, Max, Min
+from django.urls import reverse
+from .forms import BookForm
+
 
 def index(request):
     return render(request, "bookmodule/index.html")
  
 def list_books(request):
-    return render(request, 'bookmodule/list_books.html')
- 
+    books = Book.objects.all()
+    return render(request, 'bookmodule/list_books.html', {'books': books})
+
+
+def add_book(request):
+    if request.method == 'POST':
+        title = request.POST['title']
+        author = request.POST['author']
+        price = request.POST['price']
+        edition = request.POST['edition']
+        Book.objects.create(title=title, author=author, price=price, edition=edition)
+        return HttpResponseRedirect(reverse('lab9_part1.listbooks'))
+    return render(request, 'bookmodule/add_book.html')
+
+def edit_book(request, id):
+    book = Book.objects.get(id=id)
+    if request.method == 'POST':
+        book.title = request.POST['title']
+        book.author = request.POST['author']
+        book.price = request.POST['price']
+        book.edition = request.POST['edition']
+        book.save()
+        return HttpResponseRedirect(reverse('lab9_part1.listbooks'))
+    return render(request, 'bookmodule/edit_book.html', {'book': book})
+
+def delete_book(request, id):
+    book = Book.objects.get(id=id)
+    book.delete()
+    return HttpResponseRedirect(reverse('lab9_part1.listbooks'))
+
+
+
+def list_books_with_forms(request):
+    books = Book.objects.all()
+    return render(request, 'bookmodule/list_books.html', {'books': books})
+
+def add_book_with_form(request):
+    if request.method == 'POST':
+        form = BookForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('lab9_part2.listbooks'))
+    else:
+        form = BookForm()
+    return render(request, 'bookmodule/add_book.html', {'form': form})
+
+def edit_book_with_form(request, id):
+    book = Book.objects.get(id=id)
+    if request.method == 'POST':
+        form = BookForm(request.POST, instance=book)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('lab9_part2.listbooks'))
+    else:
+        form = BookForm(instance=book)
+    return render(request, 'bookmodule/edit_book.html', {'form': form})
+
+def delete_book_with_form(request, id):
+    book = Book.objects.get(id=id)
+    book.delete()
+    return HttpResponseRedirect(reverse('lab9_part2.listbooks'))
+
+
 def viewbook(request, bookId):
     return render(request, 'bookmodule/one_book.html')
  

@@ -2,22 +2,18 @@
  
 {% load static %}
  
-{% block title %} List Books Page {% endblock title %}
- 
+{% block title %}List Books{% endblock %}
+
 {% block content %}
-
-<h1>List of Books</h1>
-<a href="one_book.html"><h2>Internet & World Wide Web How to Program</h2></a>
-<a href="one_book.html"><img src="{% static 'book1.jpg' %}" alt="Book1 img desc" width="200" height="200"></a>
-<hr>
-
-<h2>2) C++ How to Program, Late Objects Version</h2>
-<img src="{% static 'book2.jpg' %}" alt="Book2 img desc" width="200" height="200">
-<hr>
-
-<h2>3) Images in Another Folder</h2>
-<img src="{% static 'book3.jpg' %}" alt="Book3 img desc" width="200" height="200">
-<hr>
-
-{% endblock content %}
- 
+<h1>Books</h1>
+<a href="{% url 'lab9_part1.addbook' %}">Add New Book</a>
+<ul>
+    {% for book in books %}
+    <li>
+        <strong>{{ book.title }}</strong> by {{ book.author }}
+        <a href="{% url 'lab9_part1.editbook' book.id %}">Edit</a>
+        <a href="{% url 'lab9_part1.deletebook' book.id %}">Delete</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
