@@ -1,0 +1,23 @@
+{% extends "bookmodule/layouts/base.html" %}
+
+{% block title %}Departments with More Than 2 Students{% endblock %}
+
+{% block content %}
+<h1>Departments with More Than 2 Students</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Department</th>
+            <th>Number of Students</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for department in departments %}
+        <tr>
+            <td>{{ department.name }}</td>
+            <td>{{ department.student_count }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

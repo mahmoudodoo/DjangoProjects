@@ -1,0 +1,29 @@
+{% extends "bookmodule/layouts/base.html" %}
+
+{% block title %}Oldest Student by Department{% endblock %}
+
+{% block content %}
+<h1>Oldest Student by Department</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Department</th>
+            <th>Oldest Student (by ID)</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in dept_data %}
+        <tr>
+            <td>{{ item.department.name }}</td>
+            <td>
+                {% if item.oldest_student %}
+                    {{ item.oldest_student.name }} (ID: {{ item.oldest_student.id }})
+                {% else %}
+                    No students
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
