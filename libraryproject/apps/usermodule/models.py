@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import FileExtensionValidator
 
 # Existing models (DO NOT REMOVE)
 class Address(models.Model):
@@ -30,7 +31,7 @@ class Course(models.Model):
 class Student(models.Model):
     name = models.CharField(max_length=100)
     age = models.IntegerField()
-    address = models.ForeignKey(Address, on_delete=models.CASCADE)  # Existing relationship
+    address = models.ForeignKey(Address, on_delete=models.CASCADE)
     card = models.OneToOneField(
         Card,
         on_delete=models.PROTECT,  # Prevents card deletion if linked to student
@@ -53,3 +54,41 @@ class Student(models.Model):
 
     def __str__(self):
         return self.name
+    
+
+
+
+class Address2(models.Model):
+    city = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.city
+
+class Student2(models.Model):
+    name = models.CharField(max_length=100)
+    age = models.IntegerField()
+    addresses = models.ManyToManyField(Address2, related_name='students')
+    
+    def __str__(self):
+        return self.name
+
+
+
+class StudentProfile(models.Model):
+    student = models.OneToOneField(Student, on_delete=models.CASCADE, related_name='profile')
+    profile_picture = models.ImageField(
+        upload_to='profile_pics/',
+        validators=[FileExtensionValidator(['jpg', 'jpeg', 'png'])],
+        blank=True,
+        null=True
+    )
+    bio = models.TextField(blank=True)
+    
+    def __str__(self):
+        return f"{self.student.name}'s Profile"
+    
+    @property
+    def picture_url(self):
+        if self.profile_picture and hasattr(self.profile_picture, 'url'):
+            return self.profile_picture.url
+        return '/static/avatar.png'

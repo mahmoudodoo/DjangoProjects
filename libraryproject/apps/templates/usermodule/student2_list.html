@@ -1,0 +1,31 @@
+{% block content %}
+<h1>Students (Many-to-Many)</h1>
+<a href="{% url 'students2.create' %}" class="btn btn-primary">Add New Student</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Addresses</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for student in students %}
+        <tr>
+            <td>{{ student.name }}</td>
+            <td>{{ student.age }}</td>
+            <td>
+                {% for address in student.addresses.all %}
+                    {{ address.city }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </td>
+            <td>
+                <a href="{% url 'students2.update' student.id %}" class="btn btn-sm btn-warning">Edit</a>
+                <a href="{% url 'students2.delete' student.id %}" class="btn btn-sm btn-danger">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

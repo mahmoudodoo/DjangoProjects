@@ -1,0 +1,84 @@
+{% extends "bookmodule/layouts/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h1>{% if form.instance.pk %}Edit{% else %}Create{% endif %} Student (M2M)</h1>
+    <form method="post" enctype="multipart/form-data">  <!-- Added enctype -->
+        {% csrf_token %}
+        
+        {# Ensure CSRF token is being rendered #}
+        <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+        
+        {# Display non-field errors #}
+        {% if form.non_field_errors %}
+        <div class="alert alert-danger">
+            {% for error in form.non_field_errors %}
+                {{ error }}
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+        <div class="form-group">
+            {{ form.name.label_tag }}
+            {{ form.name }}
+            {{ form.name.errors }}
+        </div>
+        
+        <div class="form-group">
+            {{ form.age.label_tag }}
+            {{ form.age }}
+            {{ form.age.errors }}
+        </div>
+        
+        <div class="form-group">
+            <h5>Addresses</h5>
+            
+            {# Existing addresses checkboxes #}
+            {% if form.addresses.field.queryset.exists %}
+                <div class="address-checkboxes mb-3">
+                    {% for checkbox in form.addresses %}
+                    <div class="form-check">
+                        {{ checkbox.tag }}
+                        <label class="form-check-label" for="{{ checkbox.id_for_label }}">
+                            {{ checkbox.choice_label }}
+                        </label>
+                    </div>
+                    {% endfor %}
+                </div>
+                <p class="text-muted">Or</p>
+            {% endif %}
+            
+            {# New address field #}
+            <div class="new-address-field">
+                {{ form.new_address.label_tag }}
+                {{ form.new_address }}
+                <small class="form-text text-muted">{{ form.new_address.help_text }}</small>
+                {{ form.new_address.errors }}
+            </div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a href="{% url 'students2.list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+
+<style>
+    .address-checkboxes {
+        border: 1px solid #ddd;
+        padding: 10px;
+        border-radius: 4px;
+        max-height: 200px;
+        overflow-y: auto;
+    }
+    .form-check {
+        margin-bottom: 5px;
+    }
+    .new-address-field {
+        margin-top: 15px;
+        padding: 10px;
+        background-color: #f8f9fa;
+        border-radius: 4px;
+    }
+</style>
+{% endblock %}
